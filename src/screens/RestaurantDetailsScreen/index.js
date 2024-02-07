@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, FlatList, StyleSheet } from "react-native";
 import restaurants from "../../../assets/data/restaurants.json";
+import DishListItem from "../../components/DishListItem";
 import { Ionicons } from "@expo/vector-icons";
 const restaurant = restaurants[0];
 
@@ -21,6 +22,10 @@ function RestaurantDetailsPage() {
           {restaurant.maxDeliveryTime} minutes
         </Text>
       </View>
+      <FlatList
+        data={restaurant.dishes}
+        renderItem={({ item }) => <DishListItem dish={item} />}
+      />
     </View>
   );
 }
